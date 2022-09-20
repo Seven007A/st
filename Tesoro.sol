@@ -7,22 +7,22 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract NFT is ERC721URIStorage, Ownable {
+contract Tesoro is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    constructor() ERC721("NFTToken", "RNFT") {}
+    constructor() ERC721("Tesoro", "TEST") {}
 
-    //transfer NFT recipient address with tokenURI which is json metadata
-    function mintNFT(address recipient, string memory tokenURI)
+    //transfer Tesoro recipient address with itemURI which is json metadata
+    function mintNFT(address recipient, string memory itemURI)
         public onlyOwner
         returns (uint256)
     {
-        _tokenIds.increment();
+        _itemIds.increment();
 
-        uint256 newItemId = _tokenIds.current();
+        uint256 newItemId = _itemIds.current();
         _mint(recipient, newItemId);
-        _setTokenURI(newItemId, tokenURI);
+        _setTokenURI(newItemId, itemURI);
 
         return newItemId;
     }
