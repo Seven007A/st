@@ -19,11 +19,6 @@ mapping(address => bool) controllers;
     function miint(address to, uint256 amount) external {
     require(controllers[msg.sender], "Only controllers can mint");
     _mint(to, amount);
-   
-        public onlyOwner
-        returns (uint256)
-    {
-        _itemIds.increment();
 
         uint256 newItemId = _itemIds.current();
         _mint(recipient, newItemId);
