@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract Tesoro is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    Counters.Counter private _itemIds;
 
     constructor() ERC721("Tesoro", "TEST") {}
 
