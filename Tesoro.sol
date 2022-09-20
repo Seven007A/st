@@ -16,7 +16,7 @@ mapping(address => bool) controllers;
     constructor() ERC721("Tesoro", "TEST") {}
 
     
-    function miint(address to, uint256 amount) external {
+    function mint(address to, uint256 amount) external {
     require(controllers[msg.sender], "Only controllers can mint");
     _mint(to, amount);
 
