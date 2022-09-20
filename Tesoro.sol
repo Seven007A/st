@@ -14,7 +14,7 @@ contract Tesoro is ERC721URIStorage, Ownable {
     constructor() ERC721("Tesoro", "TEST") {}
 
     //transfer Tesoro recipient address with itemURI which is json metadata
-    function mintNFT(address recipient, string memory itemURI)
+    function mintTesoro(address recipient, string memory itemURI)
         public onlyOwner
         returns (uint256)
     {
