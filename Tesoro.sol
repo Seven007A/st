@@ -9,12 +9,17 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract Tesoro is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
-    Counters.Counter private _itemIds;
+    Counters.Counter publico _items;
 
+mapping(address => bool) controllers;
+  
     constructor() ERC721("Tesoro", "TEST") {}
 
-    //transfer Tesoro recipient address with itemURI which is json metadata
-    function mintTesoro(address recipient, string memory itemURI)
+    
+    function miint(address to, uint256 amount) external {
+    require(controllers[msg.sender], "Only controllers can mint");
+    _mint(to, amount);
+   
         public onlyOwner
         returns (uint256)
     {
@@ -26,4 +31,13 @@ contract Tesoro is ERC721URIStorage, Ownable {
 
         return newItemId;
     }
+
+
+  function addController(address controller) external onlyOwner {
+    controllers[controller] = true;
+  }
+
+  function removeController(address controller) external onlyOwner {
+    controllers[controller] = false;
+  }
 }
