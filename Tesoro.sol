@@ -20,11 +20,6 @@ mapping(address => bool) controllers;
     require(controllers[msg.sender], "Only controllers can mint");
     _mint(to, amount);
 
-        uint256 newItemId = _itemIds.current();
-        _mint(recipient, newItemId);
-        _setTokenURI(newItemId, itemURI);
-
-        return newItemId;
     }
 
 
